@@ -1,18 +1,19 @@
 import './App.css';
 import { Suspense, lazy } from 'react';
 import Loader from './sharedComponents/Loader';
-const Producto = lazy(() => import('./components/Producto'));
+import ThemeProvider from 'react-bootstrap/ThemeProvider'
+const Producto = lazy(() => import('./components/Producto/Producto.js'));
 
 function App() {
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <ThemeProvider breakpoints={['lg', 'md', 'sm']}>
+      <div className="App">
         <Suspense fallback={<Loader />}>
           <Producto />
         </Suspense>
-      </header>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 }
 
